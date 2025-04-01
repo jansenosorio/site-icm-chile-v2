@@ -3,8 +3,9 @@
 import { Button, styled } from "@mui/material";
 
 export const ButtonMenuDefault = styled(Button)(() => ({
-  width: "120px",
+  width: "auto",
   height: "50px",
+  textWrap: "nowrap",
 }));
 
 export const HeaderContainer = styled("header")`

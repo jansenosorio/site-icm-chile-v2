@@ -1,9 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import { ButtonMenuDefault, HeaderContainer } from "./header.style";
 import logo from "@/public/logo-icm.svg";
-import { Grid } from "@mui/material";
+import { Grid, Menu, MenuList } from "@mui/material";
+import React from "react";
 
 export default function Header() {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <HeaderContainer>
       <Grid
@@ -28,18 +40,38 @@ export default function Header() {
           alignItems="center"
           gap={2}
         >
-          <ButtonMenuDefault variant="outlined" color="primary">
-            Menu
+          <ButtonMenuDefault variant="contained" color="primary">
+            Quiénes Somos
           </ButtonMenuDefault>
-          <ButtonMenuDefault variant="outlined" color="primary">
-            Menu
+          <ButtonMenuDefault variant="contained" color="primary">
+            Nuestra Doctrina
           </ButtonMenuDefault>
-          <ButtonMenuDefault variant="outlined" color="primary">
-            Menu
+          <ButtonMenuDefault variant="contained" color="primary">
+            Dónde Estamos
           </ButtonMenuDefault>
-          <ButtonMenuDefault variant="outlined" color="primary">
-            Menu
-          </ButtonMenuDefault>
+          <div>
+            <ButtonMenuDefault
+              id="rede-sociais-button"
+              variant="contained"
+              color="primary"
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
+            >
+              Contáctenos
+            </ButtonMenuDefault>
+            <Menu
+              id="rede-sociais-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+            >
+              <MenuList>Instagram</MenuList>
+              <MenuList>Youtube</MenuList>
+              <MenuList>Facebook</MenuList>
+            </Menu>
+          </div>
         </Grid>
       </Grid>
     </HeaderContainer>
