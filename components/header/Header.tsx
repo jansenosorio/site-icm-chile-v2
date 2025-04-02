@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ButtonMenuDefault, HeaderContainer } from "./header.style";
+import {ButtonMenuDefault, HeaderContainer} from "./header.style";
 import logo from "@/public/logo-icm.svg";
 import { Grid, Menu, MenuList } from "@mui/material";
 import React from "react";
@@ -40,37 +40,24 @@ export default function Header() {
           alignItems="center"
           gap={2}
         >
-          <ButtonMenuDefault variant="contained" color="primary">
+          <ButtonMenuDefault variant="text" color="primary">
             Quiénes Somos
           </ButtonMenuDefault>
-          <ButtonMenuDefault variant="contained" color="primary">
+          <ButtonMenuDefault variant="text" color="primary">
             Nuestra Doctrina
           </ButtonMenuDefault>
-          <ButtonMenuDefault variant="contained" color="primary">
+          <ButtonMenuDefault variant="text" color="primary">
             Dónde Estamos
           </ButtonMenuDefault>
           <div>
             <ButtonMenuDefault
-              id="rede-sociais-button"
               variant="contained"
               color="primary"
-              aria-controls={open ? "basic-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
               onClick={handleClick}
             >
               Contáctenos
             </ButtonMenuDefault>
-            <Menu
-              id="rede-sociais-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-            >
-              <MenuList>Instagram</MenuList>
-              <MenuList>Youtube</MenuList>
-              <MenuList>Facebook</MenuList>
-            </Menu>
+
           </div>
         </Grid>
       </Grid>
