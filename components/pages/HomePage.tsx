@@ -1,5 +1,10 @@
-import { Box } from "@mui/material";
+import {Box} from "@mui/material";
+import HeroSection from "@/components/sections/HeroSection";
 
 export default function HomePage() {
-  return <Box></Box>;
+  return (
+      <Box>
+        <HeroSection />
+      </Box>
+  );
 }

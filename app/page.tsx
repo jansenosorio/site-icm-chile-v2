@@ -7,9 +7,10 @@ export default function Home() {
     <>
       <Header />
       <Divider />
-      <Container maxWidth="lg">
+      <Container maxWidth="xl" >
         <HomePage />
       </Container>
+        <Divider />
     </>
   );
 }
