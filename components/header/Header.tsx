@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { ButtonMenuDefault, HeaderContainer } from './header.style';
 import logo from '@/public/logo-icm.svg';
-import { Box, Fade, Grid } from '@mui/material';
+import { Box, Grid, Zoom } from '@mui/material';
 import React, { useState } from 'react';
 import { Close, Menu } from '@mui/icons-material';
 
@@ -38,17 +38,15 @@ export default function Header() {
 					/>
 					<Box
 						onClick={() => setIsOpenMobileMenu(!isOpenMobileMenu)}
-						sx={{ display: { xs: 'flex', md: 'none' } }}
+						sx={{ position: 'relative', display: { xs: 'flex', md: 'none' } }}
 					>
-						{isOpenMobileMenu ? (
-							<Fade in={isOpenMobileMenu}>
-								<Menu sx={{ width: 35, height: 35, color: '#BB1625' }} />
-							</Fade>
-						) : (
-							<Fade in={!isOpenMobileMenu}>
-								<Close sx={{ width: 35, height: 35, color: '#BB1625' }} />
-							</Fade>
-						)}
+						<Zoom in={isOpenMobileMenu}>
+							<Menu sx={{ position: 'absolute', right: 0, top: -15, width: 35, height: 35, color: '#BB1625' }} />
+						</Zoom>
+
+						<Zoom in={!isOpenMobileMenu}>
+							<Close sx={{ position: 'absolute', right: 0, top: -15, width: 35, height: 35, color: '#BB1625' }} />
+						</Zoom>
 					</Box>
 				</Grid>
 				<Grid
