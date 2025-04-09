@@ -1,66 +1,96 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import {ButtonMenuDefault, HeaderContainer} from "./header.style";
-import logo from "@/public/logo-icm.svg";
-import { Grid, Menu, MenuList } from "@mui/material";
-import React from "react";
+import Image from 'next/image';
+import { ButtonMenuDefault, HeaderContainer } from './header.style';
+import logo from '@/public/logo-icm.svg';
+import { Box, Fade, Grid } from '@mui/material';
+import React, { useState } from 'react';
+import { Close, Menu } from '@mui/icons-material';
 
 export default function Header() {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+	const [isOpenMobileMenu, setIsOpenMobileMenu] = useState(false);
 
-  return (
-    <HeaderContainer>
-      <Grid
-        container
-        size={12}
-        spacing={2}
-        justifyContent={"space-between"}
-        alignItems="center"
-        sx={{
-          width: "100%",
-          flexDirection: { xs: "column", md: "row" },
-          paddingX: { xs: 2, md: 0 },
-        }}
-      >
-        <Grid size={{ xs: 12, md: 6 }} alignItems={"center"}>
-          <Image src={logo} alt="Logo Iglesia Cristiana Maranata" width={240} />
-        </Grid>
-        <Grid
-          size={{ xs: 12, md: 6 }}
-          display="flex"
-          justifyContent="end"
-          alignItems="center"
-          gap={2}
-        >
-          <ButtonMenuDefault variant="text" color="primary">
-            Quiénes Somos
-          </ButtonMenuDefault>
-          <ButtonMenuDefault variant="text" color="primary">
-            Nuestra Doctrina
-          </ButtonMenuDefault>
-          <ButtonMenuDefault variant="text" color="primary">
-            Dónde Estamos
-          </ButtonMenuDefault>
-          <div>
-            <ButtonMenuDefault
-              variant="contained"
-              color="primary"
-              onClick={handleClick}
-            >
-              Contáctenos
-            </ButtonMenuDefault>
-
-          </div>
-        </Grid>
-      </Grid>
-    </HeaderContainer>
-  );
+	return (
+		<HeaderContainer>
+			<Grid
+				maxWidth={'lg'}
+				container
+				size={12}
+				spacing={2}
+				justifyContent={'space-between'}
+				alignItems="center"
+				sx={{
+					width: '100%',
+					flexDirection: { xs: 'column', md: 'row' },
+					paddingX: 2,
+				}}
+			>
+				<Grid
+					container
+					justifyContent={'space-between'}
+					size={{ xs: 12, md: 4 }}
+					alignItems={'center'}
+				>
+					<Image
+						src={logo}
+						alt="Logo Iglesia Cristiana Maranata"
+						width={240}
+					/>
+					<Box
+						onClick={() => setIsOpenMobileMenu(!isOpenMobileMenu)}
+						sx={{ display: { xs: 'flex', md: 'none' } }}
+					>
+						{isOpenMobileMenu ? (
+							<Fade in={isOpenMobileMenu}>
+								<Menu sx={{ width: 35, height: 35, color: '#BB1625' }} />
+							</Fade>
+						) : (
+							<Fade in={!isOpenMobileMenu}>
+								<Close sx={{ width: 35, height: 35, color: '#BB1625' }} />
+							</Fade>
+						)}
+					</Box>
+				</Grid>
+				<Grid
+					container
+					size={{ xs: 12, md: 8 }}
+					display={{ xs: 'none', md: 'flex' }}
+					justifyContent="end"
+					alignItems="center"
+					gap={2}
+				>
+					<ButtonMenuDefault
+						variant="text"
+						color="primary"
+						sx={{ paddingX: 3 }}
+					>
+						Quiénes Somos
+					</ButtonMenuDefault>
+					<ButtonMenuDefault
+						variant="text"
+						color="primary"
+						sx={{ paddingX: 3 }}
+					>
+						Nuestra Doctrina
+					</ButtonMenuDefault>
+					<ButtonMenuDefault
+						variant="text"
+						color="primary"
+						sx={{ paddingX: 3 }}
+					>
+						Dónde Estamos
+					</ButtonMenuDefault>
+					<div>
+						<ButtonMenuDefault
+							variant="contained"
+							color="primary"
+							onClick={() => {}}
+						>
+							Contáctenos
+						</ButtonMenuDefault>
+					</div>
+				</Grid>
+			</Grid>
+		</HeaderContainer>
+	);
 }
