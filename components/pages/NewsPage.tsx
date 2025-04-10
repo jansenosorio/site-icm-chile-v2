@@ -1,5 +1,39 @@
 import { Container, Grid, Typography } from '@mui/material';
 import NewsCard from '../cards/NewsCard';
+import { NewsData } from '@/types/news.types';
+
+const newsData: NewsData[] = [
+	{
+		id: 0,
+		img: 'https://www.igrejacristamaranata.org.br/wp-content/uploads/2025/03/ceia-mundial-2025-1.jpg',
+		title: 'Ceia Mundial - 2025',
+		type: 'Institucional',
+	},
+	{
+		id: 0,
+		img: 'https://www.igrejacristamaranata.org.br/wp-content/uploads/2025/03/ceia-mundial-2025-1.jpg',
+		title: 'Ceia Mundial - 2025',
+		type: 'Institucional',
+	},
+	{
+		id: 0,
+		img: 'https://www.igrejacristamaranata.org.br/wp-content/uploads/2025/03/ceia-mundial-2025-1.jpg',
+		title: 'Ceia Mundial - 2025',
+		type: 'Institucional',
+	},
+	{
+		id: 0,
+		img: 'https://www.igrejacristamaranata.org.br/wp-content/uploads/2025/03/ceia-mundial-2025-1.jpg',
+		title: 'Ceia Mundial - 2025',
+		type: 'Institucional',
+	},
+	{
+		id: 0,
+		img: 'https://www.igrejacristamaranata.org.br/wp-content/uploads/2025/03/ceia-mundial-2025-1.jpg',
+		title: 'Ceia Mundial - 2025',
+		type: 'Institucional',
+	},
+];
 
 export default function NewsPage() {
 	return (
@@ -11,6 +45,7 @@ export default function NewsPage() {
 				container
 				justifyContent={'space-between'}
 				alignItems={'center'}
+				paddingBottom={5}
 			>
 				<Typography
 					variant={'h1'}
@@ -30,12 +65,19 @@ export default function NewsPage() {
 					{'Ver todo >'}
 				</Typography>
 			</Grid>
-			<Grid container>
-				<NewsCard />
-				<NewsCard />
-				<NewsCard />
-				<NewsCard />
-				<NewsCard />
+			<Grid
+				container
+				gap={4}
+			>
+				{newsData?.map((news, index) => (
+					<NewsCard
+						key={index}
+						newsId={news?.id}
+						newsImg={news?.img}
+						newsTitle={news?.title}
+						newsType={news?.type}
+					/>
+				))}
 			</Grid>
 		</Container>
 	);
